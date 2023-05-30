@@ -1,0 +1,8 @@
+.gradle
+.idea
+build
+tomcat.jar
+webapps
+logs
+conf/Catalina/localhost
+cookies

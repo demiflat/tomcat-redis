@@ -1,0 +1,1 @@
+curl -i -c cookies http://${HOSTNAME}/tomcat

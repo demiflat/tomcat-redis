@@ -1,0 +1,3 @@
+cat cookies;
+curl -i -b cookies http://${HOSTNAME}/tomcat;
+echo ""

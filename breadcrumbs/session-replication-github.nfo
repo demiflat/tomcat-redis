@@ -1,0 +1,14 @@
+tomcat:
+https://github.com/jfclere/tomcat-kubernetes
+https://github.com/apache/tomcat/tree/main/modules/stuffed
+https://github.com/docker-library/tomcat
+https://github.com/devlinx9/k8s_tomcat_custer
+
+redis:
+https://github.com/redisson/redisson
+https://github.com/jcoleman/tomcat-redis-session-manager
+
+jgroups:
+https://github.com/iSma/tomcat-in-the-cloud
+https://github.com/jgroups-extras/jgroups-kubernetes
+https://github.com/rhusar/jgroups-azure
