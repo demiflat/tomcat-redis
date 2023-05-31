@@ -9,6 +9,7 @@ This is the servlet JCache implementation configuration file, it is configured t
 
 
  - [conf/context.xml](conf/context.xml)
+ - [conf/redisson.yaml](conf/redisson.yaml)
 
 This is the configuration for Tomcat session replication using the Redis server, it is configured to look for the redis server at hostname="redis"
 
@@ -19,7 +20,7 @@ This is the configuration for Tomcat session replication using the Redis server,
 Define environment variable $DOCKER_REGISTRY for the container registry used.
 
 ###### Local testing/Cluster testing tools
-- [redis-ephermeral.sh](redis-ephermeral.sh)
+- [redis-ephemeral.sh](redis-ephemeral.sh)
 
 This runs a local Redis server for development testing
 
@@ -33,7 +34,7 @@ After a session is created, this call the server at $TARGET (default localhost) 
 
 
 ###### Sample output:
-```
+```json
 ~/tomcat-redis(main) $ ./cli.newsession 
 calling 10.2.2.150
 HTTP/1.1 200 OK
