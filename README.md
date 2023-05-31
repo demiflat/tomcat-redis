@@ -34,7 +34,7 @@ After a session is created, this call the server at $TARGET (default localhost) 
 
 ###### Sample output:
 ```
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli.newsession 
+~/tomcat-redis(main) $ ./cli.newsession 
 calling 10.2.2.150
 HTTP/1.1 200 OK
 Content-Length: 98
@@ -43,7 +43,7 @@ Set-Cookie: JSESSIONID=1E0A661555D17E1B9000D4DE27A91812; Path=/; HttpOnly
 Content-Type: text/plain; charset=utf-8
 
 {"count":0,"localName":"10.42.3.20","localName":"10.42.3.20","localPort":"8080","cachedEntry":"1"}
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli
+~/tomcat-redis(main) $ ./cli
 calling 10.2.2.150
 # Netscape HTTP Cookie File
 # https://curl.se/docs/http-cookies.html
@@ -56,7 +56,7 @@ Date: Wed, 31 May 2023 02:22:43 GMT
 Content-Type: text/plain; charset=utf-8
 
 {"count":1,"localName":"10.42.1.19","localName":"10.42.1.19","localPort":"8080","cachedEntry":"2"}
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli
+~/tomcat-redis(main) $ ./cli
 calling 10.2.2.150
 # Netscape HTTP Cookie File
 # https://curl.se/docs/http-cookies.html
@@ -69,7 +69,7 @@ Date: Wed, 31 May 2023 02:22:47 GMT
 Content-Type: text/plain; charset=utf-8
 
 {"count":2,"localName":"10.42.2.19","localName":"10.42.2.19","localPort":"8080","cachedEntry":"3"}
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli
+~/tomcat-redis(main) $ ./cli
 calling 10.2.2.150
 # Netscape HTTP Cookie File
 # https://curl.se/docs/http-cookies.html
@@ -82,7 +82,7 @@ Date: Wed, 31 May 2023 02:22:48 GMT
 Content-Type: text/plain; charset=utf-8
 
 {"count":3,"localName":"10.42.3.20","localName":"10.42.3.20","localPort":"8080","cachedEntry":"4"}
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli
+~/tomcat-redis(main) $ ./cli
 calling 10.2.2.150
 # Netscape HTTP Cookie File
 # https://curl.se/docs/http-cookies.html
@@ -95,7 +95,7 @@ Date: Wed, 31 May 2023 02:22:50 GMT
 Content-Type: text/plain; charset=utf-8
 
 {"count":4,"localName":"10.42.1.19","localName":"10.42.1.19","localPort":"8080","cachedEntry":"5"}
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli
+~/tomcat-redis(main) $ ./cli
 calling 10.2.2.150
 # Netscape HTTP Cookie File
 # https://curl.se/docs/http-cookies.html
