@@ -12,13 +12,13 @@ This is the servlet JCache implementation configuration file, it is configured t
 
 This is the configuration for Tomcat session replication using the Redis server, it is configured to look for the redis server at hostname="redis"
 
-###### Running make will list build targets
+#### Running make will list build targets
 
 - DOCKER_REGISTRY 
 
 Define environment variable $DOCKER_REGISTRY for the container registry used.
 
-######## Local testing/Cluster testing tools
+###### Local testing/Cluster testing tools
 - redis-ephermeral.sh
 
 This runs a local Redis server for development testing
@@ -31,7 +31,8 @@ This calls the server at $TARGET (default localhost) to create a new session
 
 After a session is created, this call the server at $TARGET (default localhost) to continue to use the session created previously.
 
-####### Sample output:
+
+###### Sample output:
 ```
 gandalf ~/development/projects/orbeon/tomcat-redis(main) $ ./cli.newsession 
 calling 10.2.2.150
@@ -107,6 +108,5 @@ Date: Wed, 31 May 2023 02:22:53 GMT
 Content-Type: text/plain; charset=utf-8
 
 {"count":5,"localName":"10.42.2.19","localName":"10.42.2.19","localPort":"8080","cachedEntry":"6"}
-gandalf ~/development/projects/orbeon/tomcat-redis(main) $ 
 
 ```
