@@ -5,13 +5,13 @@
 ###### Tested configurations:
  - [src/main/resources/redisson-jcache.yaml](src/main/resources/redisson-jcache.yaml)
   
-This is the servlet JCache implementation configuration file, it is configured to look for the redis server at hostname="redis"
+This is the servlet JCache implementation configuration file, it is configured to look for the redis server at hostname="redis" [^1]
 
 
  - [conf/context.xml](conf/context.xml)
  - [conf/redisson.yaml](conf/redisson.yaml)
 
-This is the configuration for Tomcat session replication using the Redis server, it is configured to look for the redis server at hostname="redis"
+This is the configuration for Tomcat session replication using the Redis server, it is configured to look for the redis server at hostname="redis" [^2]
 
 #### Running make will list build targets
 
@@ -111,3 +111,21 @@ Content-Type: text/plain; charset=utf-8
 {"count":5,"localName":"10.42.2.19","localName":"10.42.2.19","localPort":"8080","cachedEntry":"6"}
 
 ```
+---
+#### Kubernetes deployments
+[k8s/k8s-role.yaml](k8s/k8s-role.yaml)
+Kubernetes role, used to allow Tomcat to call Kubernetes API to get member list of other pods in the same namespace.
+
+[k8s/k8s-deployment.yaml](k8s/k8s-deployment.yaml) 
+Kubernetes deployment, set to create 3 replicas for testing.[^3]
+
+[k8s/k8s-ingress.yaml](k8s/k8s-ingress.yaml) 
+Kubernetes ingress, used to expose deployment externally.[^4]
+
+[^1]: Reddison [Config](https://github.com/redisson/redisson/wiki/2.-Configuration#22-declarative-configuration)
+
+[^2]: Reddison [JCache](https://github.com/redisson/redisson/wiki/14.-Integration-with-frameworks#144-jcache-api-jsr-107-implementation)
+
+[^3]: Kubernetes [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+
+[^4]: Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
