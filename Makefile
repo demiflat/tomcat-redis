@@ -36,7 +36,7 @@ login:
 docker: build
 > podman build -f Containerfile -t $(CONTAINER_TAG)
 
-push: docker
+push: login docker
 > podman push $(CONTAINER_TAG)
 
 .PHONY: redis
@@ -51,7 +51,7 @@ redis-destroy:
 
 deploy: push redis
 > cat k8s/k8s-deployment.yaml | CONTAINER_TAG=$(CONTAINER_TAG) DEPLOYMENT=$(DEPLOYMENT) DEPLOYMENT_PORT=$(DEPLOYMENT_PORT) envsubst | kubectl apply -f -
-> kubectl create service clusterip $(DEPLOYMENT) --tcp=8080:8080
+> cat k8s/k8s-service.yaml | DEPLOYMENT=$(DEPLOYMENT) DEPLOYMENT_PORT=$(DEPLOYMENT_PORT) NAMESPACE=$(NAMESPACE) envsubst | kubectl apply -f -
 > cat k8s/k8s-ingress.yaml | DEPLOYMENT=$(DEPLOYMENT) DEPLOYMENT_PORT=$(DEPLOYMENT_PORT) envsubst | kubectl apply -f -
 > cat k8s/k8s-role.yaml | NAMESPACE=$(NAMESPACE) envsubst | kubectl apply -f -
 > kubectl get all
