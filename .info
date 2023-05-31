@@ -11,5 +11,5 @@ destroy   : undeploy from kubernetes
 build     : build war
 clean     : clean build/
 kube-info : kubernetes deployment info
-
+watch     : watch kubernetes deployment progress
 [0m
