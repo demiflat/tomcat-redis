@@ -1,4 +1,4 @@
-# tomcat redis                                                  
+# ![tomcat redis](tomcat-redis.jpg)                                                 
 
 ##### This project shows how to configure a simple servlet to run on Tomcat in Kubernetes with distributed session replication and JCache implemented by Redis.
 
