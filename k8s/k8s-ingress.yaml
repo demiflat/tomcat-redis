@@ -14,4 +14,4 @@ spec:
           service:
             name: ${DEPLOYMENT}
             port:
-              number: 8080
+              number: ${DEPLOYMENT_PORT}

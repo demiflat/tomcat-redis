@@ -1,1 +1,3 @@
-curl -i -c cookies http://${HOSTNAME}/tomcat
+TARGET=${TARGET:-localhost}
+echo calling $TARGET
+curl -i -c cookies http://${TARGET}/tomcat

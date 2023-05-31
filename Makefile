@@ -10,10 +10,13 @@ endif
 .RECIPEPREFIX = >
 
 REGISTRY:=$(DOCKER_REGISTRY)
-CONTAINER_NAME=tomcat-sessions
+CONTAINER_NAME=tomcat-redis
 CONTAINER_VERSION=1
-CONTAINER_TAG="$(REGISTRY)/$(CONTAINER_NAME):$(CONTAINER_VERSION)"
-DEPLOYMENT=tomcat-sessions
+CONTAINER_TAG:="$(REGISTRY)/$(CONTAINER_NAME):$(CONTAINER_VERSION)"
+DEPLOYMENT=tomcat-redis
+DEPLOYMENT_PORT=8080
+REDIS=redis
+REDIS_PORT=6379
 NAMESPACE=default
 
 info:
@@ -36,21 +39,40 @@ docker: build
 push: docker
 > podman push $(CONTAINER_TAG)
 
-deploy: login push
-> kubectl create deployment $(DEPLOYMENT) --image=$(CONTAINER_TAG) --port=8080 --replicas=3
-> kubectl create service clusterip $(DEPLOYMENT) --tcp=8080:8080
-> cat k8s-ingress.yaml | DEPLOYMENT=$(DEPLOYMENT) envsubst | kubectl apply -f -
-> cat k8s-role.yaml | NAMESPACE=$(NAMESPACE) envsubst | kubectl apply -f -
+.PHONY: redis
+redis:
+> kubectl create deployment $(REDIS) --image=$(REDIS):latest --port 6479 --replicas=1
+> kubectl create service clusterip redis --tcp=6379:6379
 > kubectl get all
 
-destroy:
+redis-destroy:
+> kubectl delete deployment $(REDIS) --ignore-not-found=true
+> kubectl delete service $(REDIS) --ignore-not-found=true
+
+deploy: push redis
+> cat k8s/k8s-deployment.yaml | CONTAINER_TAG=$(CONTAINER_TAG) DEPLOYMENT=$(DEPLOYMENT) DEPLOYMENT_PORT=$(DEPLOYMENT_PORT) envsubst | kubectl apply -f -
+> kubectl create service clusterip $(DEPLOYMENT) --tcp=8080:8080
+> cat k8s/k8s-ingress.yaml | DEPLOYMENT=$(DEPLOYMENT) DEPLOYMENT_PORT=$(DEPLOYMENT_PORT) envsubst | kubectl apply -f -
+> cat k8s/k8s-role.yaml | NAMESPACE=$(NAMESPACE) envsubst | kubectl apply -f -
+> kubectl get all
+
+destroy: redis-destroy
 > kubectl delete deployment $(DEPLOYMENT) --ignore-not-found=true
 > kubectl delete service $(DEPLOYMENT) --ignore-not-found=true
 > kubectl delete ingress $(DEPLOYMENT) --ignore-not-found=true
 > kubectl get all
+
+watch:
+> watch -n 2 $(MAKE) kube-info
 
 kube-info:
 > kubectl get all
 
 kube-info-all:
 > kubectl get -A all
+
+kube-dns-utils:
+> kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+
+kube-dns-redis:
+> kubectl exec -i -t dnsutils -- nslookup redis

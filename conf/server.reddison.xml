@@ -16,13 +16,12 @@
     <Service name="Catalina">
         <Connector port="8080"
             protocol="HTTP/1.1"
-            connectionTimeout="20000"
-            redirectPort="8443"/>
+            connectionTimeout="20000"/>
         <Engine name="Catalina"
             defaultHost="localhost">
             <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster">
                 <Manager className="org.redisson.tomcat.RedissonSessionManager"
-                    configPath="${catalina.base}/redisson.conf"
+                    configPath="${catalina.base}/redisson.yaml"
                     readMode="REDIS"
                     updateMode="DEFAULT"
                     broadcastSessionEvents="false"

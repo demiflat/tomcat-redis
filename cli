@@ -1,3 +1,5 @@
+TARGET=${TARGET:-localhost}
+echo calling $TARGET
 cat cookies;
-curl -i -b cookies http://${HOSTNAME}/tomcat;
+curl -i -b cookies http://${TARGET}/tomcat;
 echo ""
