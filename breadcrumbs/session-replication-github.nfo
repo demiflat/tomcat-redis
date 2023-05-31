@@ -7,6 +7,7 @@ https://github.com/devlinx9/k8s_tomcat_custer
 redis:
 https://github.com/redisson/redisson
 https://github.com/jcoleman/tomcat-redis-session-manager
+https://github.com/Azure-Samples/open-liberty-on-aks
 
 jgroups:
 https://github.com/iSma/tomcat-in-the-cloud
