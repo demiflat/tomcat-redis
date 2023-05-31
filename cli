@@ -1,4 +1,4 @@
-TARGET=${TARGET:-localhost}
+TARGET=${TARGET:-localhost:8080}
 echo calling $TARGET
 cat cookies;
 curl -i -b cookies http://${TARGET}/tomcat;
