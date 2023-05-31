@@ -3,12 +3,12 @@
 ##### This project shows how to configure a simple servlet to run on Tomcat in Kubernetes with distributed session replication and JCache implemented by Redis.
 
 ###### Tested configurations:
- - src/main/resources/redisson-jcache.yaml
+ - [src/main/resources/redisson-jcache.yaml](src/main/resources/redisson-jcache.yaml)
   
 This is the servlet JCache implementation configuration file, it is configured to look for the redis server at hostname="redis"
 
 
- - conf/context.xml
+ - [conf/context.xml](conf/context.xml)
 
 This is the configuration for Tomcat session replication using the Redis server, it is configured to look for the redis server at hostname="redis"
 
@@ -19,15 +19,15 @@ This is the configuration for Tomcat session replication using the Redis server,
 Define environment variable $DOCKER_REGISTRY for the container registry used.
 
 ###### Local testing/Cluster testing tools
-- redis-ephermeral.sh
+- [redis-ephermeral.sh](redis-ephermeral.sh)
 
 This runs a local Redis server for development testing
 
-- cli.newsession
+- [cli.newsession](cli.newsession)
   
 This calls the server at $TARGET (default localhost) to create a new session
 
-- cli
+- [cli](cli)
 
 After a session is created, this call the server at $TARGET (default localhost) to continue to use the session created previously.
 
